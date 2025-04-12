@@ -20,8 +20,10 @@ function removeFile(FilePath) {
 
 router.get("/", async (req, res) => {
   let num = req.query.number;
+
   async function RobinPair() {
-    const { state, saveCreds } = await useMultiFileAuthState(`./session`);
+    const { state, saveCreds } = await useMultiFileAuthState("./session");
+
     try {
       let RobinPairWeb = makeWASocket({
         auth: {
@@ -41,64 +43,58 @@ router.get("/", async (req, res) => {
         num = num.replace(/[^0-9]/g, "");
         const code = await RobinPairWeb.requestPairingCode(num);
         if (!res.headersSent) {
-          await res.send({ code });
+          return res.send({ code });
         }
       }
 
       RobinPairWeb.ev.on("creds.update", saveCreds);
+
       RobinPairWeb.ev.on("connection.update", async (s) => {
         const { connection, lastDisconnect } = s;
+
         if (connection === "open") {
           try {
             await delay(10000);
-            const sessionPrabath = fs.readFileSync("./session/creds.json");
 
             const auth_path = "./session/";
             const user_jid = jidNormalizedUser(RobinPairWeb.user.id);
 
             function randomMegaId(length = 6, numberLength = 4) {
-              const characters =
-                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+              const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
               let result = "";
               for (let i = 0; i < length; i++) {
-                result += characters.charAt(
-                  Math.floor(Math.random() * characters.length)
-                );
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
               }
-              const number = Math.floor(
-                Math.random() * Math.pow(10, numberLength)
-              );
+              const number = Math.floor(Math.random() * Math.pow(10, numberLength));
               return `${result}${number}`;
             }
 
-            const mega_url = await upload(
-              fs.createReadStream(auth_path + "creds.json"),
-              `${randomMegaId()}.json`
-            );
+            const fileName = `${randomMegaId()}.json`;
+            const mega_url = await upload(fs.createReadStream(auth_path + "creds.json"), fileName);
 
-            const string_session = mega_url.replace(
-              "https://mega.nz/file/",
-              ""
-            );
+            const string_session = mega_url.replace("https://mega.nz/file/", "");
 
-            const sid = `*HITMAX-MOVIE[The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is the your Session ID, copy this id and paste into config.js file*\n\n*You can ask any question using this link*\n\n*wa.me/message/GVOTYLER4FAPM1*\n\n*You can join my whatsapp group*\n\n*https://chat.whatsapp.com/J6Eqe8YJOTtJY3sygyCNVZ*`;
-            const mg = `🛑 *Do not share this code to anyone* 🛑`;
-            const dt = await RobinPairWeb.sendMessage(user_jid, {
+            const sid = `*HITMAX-MOVIE [The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is your Session ID, copy this ID and paste it into the config.js file.*\n\n*You can ask any question using this link:*\nwa.me/message/GVOTYLER4FAPM1\n\n*You can join our WhatsApp group:*\nhttps://chat.whatsapp.com/J6Eqe8YJOTtJY3sygyCNVZ`;
+
+            const warning_msg = `🛑 *Do not share this code with anyone!* 🛑`;
+
+            await RobinPairWeb.sendMessage(user_jid, {
               image: {
                 url: "https://raw.githubusercontent.com/jobif/mr.rasintha/refs/heads/main/photo_2025-03-28_11-36-25.jpg",
               },
               caption: sid,
             });
-            const msg = await RobinPairWeb.sendMessage(user_jid, {
-              text: string_session,
-            });
-            const msg1 = await RobinPairWeb.sendMessage(user_jid, { text: mg });
+
+            await RobinPairWeb.sendMessage(user_jid, { text: string_session });
+            await RobinPairWeb.sendMessage(user_jid, { text: warning_msg });
+
           } catch (e) {
+            console.error("Error while sending message:", e);
             exec("pm2 restart prabath");
           }
 
           await delay(100);
-          return await removeFile("./session");
+          removeFile("./session");
           process.exit(0);
         } else if (
           connection === "close" &&
@@ -111,15 +107,15 @@ router.get("/", async (req, res) => {
         }
       });
     } catch (err) {
+      console.error("Main error:", err);
       exec("pm2 restart Robin-md");
-      console.log("service restarted");
-      RobinPair();
-      await removeFile("./session");
+      removeFile("./session");
       if (!res.headersSent) {
-        await res.send({ code: "Service Unavailable" });
+        return res.send({ code: "Service Unavailable" });
       }
     }
   }
+
   return await RobinPair();
 });
 

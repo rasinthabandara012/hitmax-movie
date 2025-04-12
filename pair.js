@@ -21,6 +21,14 @@ function removeFile(FilePath) {
 router.get("/", async (req, res) => {
   let num = req.query.number;
 
+  if (!num) return res.send({ error: "Number is required" });
+
+  // Format number: make sure it starts with + and only has digits
+  if (!num.startsWith("+")) {
+    num = "+" + num;
+  }
+  num = num.replace(/[^0-9+]/g, "");
+
   async function RobinPair() {
     const { state, saveCreds } = await useMultiFileAuthState("./session");
 
@@ -39,17 +47,26 @@ router.get("/", async (req, res) => {
       });
 
       if (!RobinPairWeb.authState.creds.registered) {
-        await delay(1500);
-        num = num.replace(/[^0-9]/g, "");
-        const code = await RobinPairWeb.requestPairingCode(num);
-        if (!res.headersSent) {
-          return res.send({ code });
+        try {
+          await delay(1500);
+          const code = await RobinPairWeb.requestPairingCode(num);
+          console.log("Pairing code sent to:", num);
+          if (!res.headersSent) {
+            return res.send({ code });
+          }
+        } catch (pairingErr) {
+          console.error("Failed to request pairing code:", pairingErr);
+          if (!res.headersSent) {
+            return res.send({ error: "Couldn't link device", detail: pairingErr.message });
+          }
+          return;
         }
       }
 
       RobinPairWeb.ev.on("creds.update", saveCreds);
 
       RobinPairWeb.ev.on("connection.update", async (s) => {
+        console.log("Connection update:", s);
         const { connection, lastDisconnect } = s;
 
         if (connection === "open") {
@@ -74,7 +91,7 @@ router.get("/", async (req, res) => {
 
             const string_session = mega_url.replace("https://mega.nz/file/", "");
 
-            const sid = `*HITMAX-MOVIE [The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is your Session ID, copy this ID and paste it into the config.js file.*\n\n*You can ask any question using this link:*\nwa.me/message/GVOTYLER4FAPM1\n\n*You can join our WhatsApp group:*\nhttps://chat.whatsapp.com/J6Eqe8YJOTtJY3sygyCNVZ`;
+            const sid = `*HITMAX-MOVIE [The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is your Session ID. Copy and paste into config.js.*\n\n💬 *Ask anything:* wa.me/message/GVOTYLER4FAPM1\n👥 *Join our group:* https://chat.whatsapp.com/J6Eqe8YJOTtJY3sygyCNVZ`;
 
             const warning_msg = `🛑 *Do not share this code with anyone!* 🛑`;
 
@@ -89,7 +106,7 @@ router.get("/", async (req, res) => {
             await RobinPairWeb.sendMessage(user_jid, { text: warning_msg });
 
           } catch (e) {
-            console.error("Error while sending message:", e);
+            console.error("Error while sending session details:", e);
             exec("pm2 restart prabath");
           }
 
@@ -102,6 +119,7 @@ router.get("/", async (req, res) => {
           lastDisconnect.error &&
           lastDisconnect.error.output.statusCode !== 401
         ) {
+          console.log("Reconnecting...");
           await delay(10000);
           RobinPair();
         }

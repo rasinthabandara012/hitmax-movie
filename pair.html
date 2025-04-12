@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HITMAX-Movie WEB PAIR | Premium WhatsApp Linking</title>
+  <title>ROBIN WEB PAIR | Premium</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -12,15 +12,7 @@
       --secondary: #c0392b;
       --accent: #25d366;
       --dark: #121212;
-      --darker: #0a0a0a;
       --light: #f5f5f5;
-      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
     }
     
     body {
@@ -29,10 +21,9 @@
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      background: var(--darker);
+      background: var(--dark);
       font-family: 'Poppins', sans-serif;
       color: var(--light);
-      overflow-x: hidden;
       background-image: 
         radial-gradient(circle at 25% 25%, rgba(231, 76, 60, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, rgba(37, 211, 102, 0.1) 0%, transparent 50%);
@@ -51,28 +42,6 @@
       width: 100%;
       max-width: 420px;
       padding: 20px;
-      perspective: 1000px;
-    }
-    
-    .logo {
-      margin-bottom: 20px;
-      text-align: center;
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    .logo i {
-      font-size: 3.5rem;
-      color: var(--accent);
-      text-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
-    }
-    
-    .logo h1 {
-      font-size: 1.8rem;
-      margin-top: 10px;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
     }
     
     .box {
@@ -80,17 +49,21 @@
       padding: 30px;
       position: relative;
       text-align: center;
-      background: rgba(20, 20, 20, 0.8);
+      background: rgba(40, 40, 40, 0.9);
       border-radius: 16px;
-      transform-style: preserve-3d;
       box-shadow: 
         0 10px 30px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.05),
-        inset 0 0 20px rgba(231, 76, 60, 0.2);
+        0 0 0 1px rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.3s ease;
       overflow: hidden;
       z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
     }
     
     .box::before {
@@ -100,46 +73,33 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: var(--gradient);
-      opacity: 0.1;
+      background: linear-gradient(45deg, transparent, rgba(231, 76, 60, 0.1), transparent);
       transform: rotate(45deg);
       z-index: -1;
-      animation: rotateBG 15s linear infinite;
+      animation: shine 3s infinite;
     }
     
-    @keyframes rotateBG {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes shine {
+      0% { left: -50%; }
+      100% { left: 150%; }
     }
     
-    .box:hover {
-      transform: perspective(1000px) rotateY(5deg) rotateX(2deg) translateY(-5px);
-      box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255, 255, 255, 0.1),
-        inset 0 0 30px rgba(231, 76, 60, 0.3);
-    }
-    
-    .box-content {
-      position: relative;
-      z-index: 2;
-    }
-    
-    h3.title {
+    h3.centered-text {
       font-size: 1.5rem;
       margin-bottom: 15px;
       color: var(--light);
       font-weight: 600;
-      background: var(--gradient);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     
-    .description {
+    h6 {
       font-size: 0.9rem;
       margin-bottom: 25px;
       color: rgba(255, 255, 255, 0.7);
       line-height: 1.5;
+      font-weight: 400;
     }
     
     .input-container {
@@ -165,6 +125,7 @@
       color: var(--light);
       font-size: 1rem;
       transition: all 0.3s ease;
+      border-radius: 0.8rem 0 0 0.8rem;
     }
     
     .input-container input:focus {
@@ -184,31 +145,28 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+      border-radius: 0 1rem 1rem 0;
     }
     
     .input-container button:hover {
       background: #1da851;
     }
     
-    .input-container button::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transform: translateX(-100%);
-      transition: 0.5s;
+    #loading-spinner {
+      display: none;
+      margin: 20px 0;
+      color: var(--accent);
     }
     
-    .input-container button:hover::after {
-      transform: translateX(100%);
+    #loading-spinner i {
+      animation: spin 1s linear infinite;
+      font-size: 1.5rem;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
     
     #pair {
@@ -217,423 +175,136 @@
       transition: all 0.5s ease;
     }
     
-    .code-display {
+    #copy {
+      display: inline-block;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 8px;
-      padding: 15px;
-      margin-top: 20px;
+      padding: 12px 20px;
+      margin-top: 10px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
       transition: all 0.3s ease;
-    }
-    
-    .code-display:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .code-display::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(37, 211, 102, 0.1));
-      z-index: -1;
-    }
-    
-    .code-text {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--accent);
       cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      color: var(--accent);
+      font-weight: bold;
     }
     
-    .code-text:hover {
-      color: var(--light);
+    #copy:hover {
+      background: rgba(0, 0, 0, 0.5);
+      transform: translateY(-3px);
     }
     
-    #loading-spinner {
-      display: none;
-      margin: 20px 0;
-    }
-    
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
+    .fa-user {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+      background: rgba(37, 211, 102, 0.1);
+      padding: 15px;
       border-radius: 50%;
-      border-top-color: var(--accent);
-      animation: spin 1s ease-in-out infinite;
-      margin: 0 auto;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-    
-    .particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      animation: floatParticle linear infinite;
-    }
-    
-    @keyframes floatParticle {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(20px);
-        opacity: 0;
-      }
-    }
-    
-    .confetti {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background-color: var(--accent);
-      opacity: 0;
-      z-index: 1000;
-      animation: confettiFall 3s ease-out forwards;
-    }
-    
-    @keyframes confettiFall {
-      0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
     }
     
     @media (max-width: 500px) {
-      .container {
-        padding: 15px;
-      }
-      
-      .box {
-        padding: 25px 20px;
-      }
-      
       .input-container {
         flex-direction: column;
       }
       
       .input-container input {
-        border-radius: 8px 8px 0 0 !important;
+        border-radius: 0.8rem !important;
       }
       
       .input-container button {
-        border-radius: 0 0 8px 8px !important;
         padding: 15px;
+        border-radius: 0.8rem !important;
       }
     }
     
-    /* Glow animation for success */
-    @keyframes glow {
-      0% { box-shadow: 0 0 5px var(--accent); }
-      50% { box-shadow: 0 0 20px var(--accent); }
-      100% { box-shadow: 0 0 5px var(--accent); }
+    /* Pulse animation for code */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     
-    .success-glow {
-      animation: glow 2s infinite;
+    .pulse {
+      animation: pulse 2s infinite;
     }
   </style>
 </head>
 <body>
-  <div class="particles" id="particles"></div>
   <div class="container">
-    <div class="logo">
-      <i class="fab fa-whatsapp"></i>
-      <h1>HITMAX-MOVIE WEB PAIR</h1>
-    </div>
-    
-    <div class="box" id="box">
-      <div class="box-content">
-        <h3 class="title">Link Hitmax with WhatsApp</h3>
-        <p class="description">
-          Enter your phone number with country code to generate your unique pairing code for HITMAX WEB
-        </p>
-        
-        <div class="input-container">
-          <input type="tel" id="number" placeholder="+94771xxxxxx" pattern="\+[0-9]{10,15}" required>
-          <button id="submit">
-            <span class="btn-text">Generate</span>
-            <i class="fas fa-arrow-right btn-icon"></i>
-          </button>
+    <div class="main">
+      <div class="box" id="box">
+        <div id="text">
+          <i class="fas fa-user-shield"></i>
+          <p>
+            <h3 class="centered-text">Link Robin with phone number</h3>
+            <h6>🔢 Enter your number with country code. ROBIN WEB PAIR</h6>
+            <div class="input-container">
+              <input placeholder="+94704xxxxxx" type="number" id="number" placeholder="❗ Enter your phone number with country code, ROBIN WEB PAIR" name="">
+              <button id="submit">Submit ROBIN</button>
+            </div>
+            <div id="loading-spinner">
+              <i class="fas fa-spinner"></i>
+            </div>
+            <main id="pair"></main>
+          </p>
         </div>
-        
-        <div id="loading-spinner">
-          <div class="spinner"></div>
-          <p class="loading-text">Generating Your Code ...</p>
-        </div>
-        
-        <div id="pair"></div>
       </div>
     </div>
   </div>
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
-    // Create particles
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 30;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Random properties
-        const size = Math.random() * 5 + 1;
-        const posX = Math.random() * window.innerWidth;
-        const duration = Math.random() * 10 + 5;
-        const delay = Math.random() * 5;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}px`;
-        particle.style.bottom = `-10px`;
-        particle.style.animationDuration = `${duration}s`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = Math.random() * 0.5 + 0.1;
-        
-        // Random color
-        const colors = ['#e74c3c', '#25d366', '#3498db', '#f1c40f'];
-        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        
-        particlesContainer.appendChild(particle);
-      }
+    let a = document.getElementById("pair");
+    let b = document.getElementById("submit");
+    let c = document.getElementById("number");
+    let box = document.getElementById("box");
+
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "✔️ COPIED";
+      obj.style = "color:#25d366;font-weight:bold";
+      obj.classList.add("pulse");
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color:#25d366;font-weight-bold";
+        obj.classList.remove("pulse");
+      }, 2000);
     }
-    
-    // Create confetti effect
-    function createConfetti() {
-      const colors = ['#25d366', '#e74c3c', '#3498db', '#f1c40f', '#9b59b6', '#1abc9c'];
-      
-      for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        
-        // Random properties
-        const size = Math.random() * 10 + 5;
-        const posX = Math.random() * window.innerWidth;
-        const duration = Math.random() * 3 + 2;
-        const delay = Math.random() * 2;
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        
-        confetti.style.width = `${size}px`;
-        confetti.style.height = `${size}px`;
-        confetti.style.left = `${posX}px`;
-        confetti.style.top = `-10px`;
-        confetti.style.animationDuration = `${duration}s`;
-        confetti.style.animationDelay = `${delay}s`;
-        confetti.style.backgroundColor = color;
-        
-        // Random shape
-        if (Math.random() > 0.5) {
-          confetti.style.borderRadius = '50%';
-        } else {
-          confetti.style.borderRadius = '0';
-          confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-        }
-        
-        document.body.appendChild(confetti);
-        
-        // Remove confetti after animation
-        setTimeout(() => {
-          confetti.remove();
-        }, duration * 1000);
-      }
-    }
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      createParticles();
-      
-      const a = document.getElementById("pair");
-      const b = document.getElementById("submit");
-      const c = document.getElementById("number");
-      const box = document.getElementById("box");
-      const btnText = document.querySelector('.btn-text');
-      const btnIcon = document.querySelector('.btn-icon');
-      
-      // Button hover effect
-      b.addEventListener('mouseenter', () => {
-        btnText.style.transform = 'translateX(-5px)';
-        btnIcon.style.transform = 'translateX(5px)';
-      });
-      
-      b.addEventListener('mouseleave', () => {
-        btnText.style.transform = 'translateX(0)';
-        btnIcon.style.transform = 'translateX(0)';
-      });
-      
-      async function copyCode() {
-        const codeElement = document.getElementById("copy");
-        if (!codeElement) return;
-        
-        const code = codeElement.innerText.replace('CODE: ', '');
-        const originalText = codeElement.innerHTML;
-        
-        try {
-          await navigator.clipboard.writeText(code);
-          
-          // Success animation
-          codeElement.innerHTML = '<i class="fas fa-check"></i> Copied to clipboard!';
-          codeElement.style.color = '#25d366';
-          box.classList.add('success-glow');
-          createConfetti();
-          
-          // Reset after 2 seconds
-          setTimeout(() => {
-            codeElement.innerHTML = originalText;
-            codeElement.style.color = '#25d366';
-            box.classList.remove('success-glow');
-          }, 2000);
-        } catch (err) {
-          codeElement.innerHTML = 'Failed to copy';
-          codeElement.style.color = '#e74c3c';
-          setTimeout(() => {
-            codeElement.innerHTML = originalText;
-            codeElement.style.color = '#25d366';
-          }, 2000);
-        }
-      }
-      
-      b.addEventListener("click", async (e) => {
-        e.preventDefault();
-        
-        if (!c.value) {
-          showError("❗ Please enter your WhatsApp number with country code.");
-          return;
-        }
-        
-        // Basic validation for country code
-        if (!c.value.startsWith('+')) {
-          showError("❗ Please include country code starting with +");
-          return;
-        }
-        
-        const numericValue = c.value.replace(/[^0-9]/g, "");
-        
-        if (numericValue.length < 10) {
-          showError("❗ Invalid number format. Please try again.");
-          return;
-        }
-        
-        // Format the number for display
-        let formattedNumber = `+${numericValue}`;
-        if (numericValue.length > 3) {
-          formattedNumber = `+${numericValue.substring(0, 3)} ${numericValue.substring(3, 6)} ${numericValue.substring(6)}`;
-        }
-        
-        c.value = formattedNumber;
-        c.style.color = "#ffffff";
-        c.style.fontSize = "18px";
-        
-        // Show loading state
+
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!c.value) {
+        a.innerHTML = '<div style="color:#e74c3c;font-weight:bold;background:rgba(231,76,60,0.1);padding:10px;border-radius:8px;">❗Enter your whatsapp number with country code.</div><br>';
+      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<div style="color:#e74c3c;font-weight:bold;background:rgba(231,76,60,0.1);padding:10px;border-radius:8px;">❗Invalid number format. Please try again.</div><br>';
+      } else {
+        const bc = c.value.replace(/[^0-9]/g, "");
+        let bb = "";
+        let bbc = "";
+        const cc = bc.split('');
+        cc.map(a => {
+          bbc += a;
+          if (bbc.length == 3) {
+            bb += " " + a;
+          } else if (bbc.length == 8) {
+            bb += " " + a;
+          } else {
+            bb += a;
+          }
+        });
+        c.type = "text";
+        c.value = "+" + bb;
+        c.style = "color:white;font-size:20px";
+        // Show the loading spinner
         document.getElementById("loading-spinner").style.display = "block";
         a.innerHTML = '';
-        b.disabled = true;
-        btnText.textContent = "Processing...";
-        btnIcon.className = "fas fa-spinner fa-spin";
-        
-        try {
-          // Simulate API call (replace with actual axios call)
-          // const { data } = await axios(`/code?number=${numericValue}`);
-          // const code = data.code || "❗ Service Unavailable";
-          
-          // For demo purposes, we'll simulate a response
-          await new Promise(resolve => setTimeout(resolve, 2000));
-          const code = Math.floor(100000 + Math.random() * 900000); // Random 6-digit code
-          
-          a.innerHTML = `
-            <div class="code-display">
-              <div id="copy" class="code-text" onclick="copyCode()">
-                <i class="fas fa-key"></i>
-                <span>CODE: ${code}</span>
-                <i class="fas fa-copy"></i>
-              </div>
-              <p style="margin-top: 10px; font-size: 0.8rem; color: rgba(255,255,255,0.6)">
-                Click to copy the code
-              </p>
-            </div>
-          `;
-          
-          // Add the copy function to the window for the onclick attribute
-          window.copyCode = copyCode;
-        } catch (error) {
-          showError("❗ Service unavailable. Please try again later.");
-          console.error("Error:", error);
-        } finally {
-          document.getElementById("loading-spinner").style.display = "none";
-          b.disabled = false;
-          btnText.textContent = "Generate";
-          btnIcon.className = "fas fa-arrow-right";
-        }
-      });
-      
-      function showError(message) {
-        a.innerHTML = `
-          <div class="code-display" style="background: rgba(231, 76, 60, 0.1); border-color: rgba(231, 76, 60, 0.3);">
-            <div style="color: #e74c3c; font-weight: 500;">
-              <i class="fas fa-exclamation-circle"></i> ${message}
-            </div>
-          </div>
-        `;
-        
-        // Shake animation for error
-        box.style.animation = 'shake 0.5s';
-        setTimeout(() => {
-          box.style.animation = '';
-        }, 500);
+        let { data } = await axios(`/code?number=${bc}`);
+        let code = data.code || "❗ Service Unavailable";
+        a.innerHTML = '<div id="copy" onclick="Copy()" style="color:#25d366;font-weight:bold">CODE: <span style="color:white;font-weight:bold">' + code + '</span></div><br>';
+        // Hide the loading spinner when the process is complete
+        document.getElementById("loading-spinner").style.display = "none";
       }
-      
-      // Add shake animation dynamically
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes shake {
-          0%, 100% { transform: perspective(1000px) rotateY(0deg) translateX(0); }
-          20%, 60% { transform: perspective(1000px) rotateY(0deg) translateX(-5px); }
-          40%, 80% { transform: perspective(1000px) rotateY(0deg) translateX(5px); }
-        }
-      `;
-      document.head.appendChild(style);
     });
   </script>
 </body>

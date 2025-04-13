@@ -81,7 +81,7 @@ router.get("/", async (req, res) => {
               ""
             );
 
-            const sid = `*🐔ALEX-OFFICIAL💥*\n\n 🆔This is the your Session ID: ${string_session} 🛡️\n\n*copy this id and paste into config.js file*\n\n*☑️You can ask any question using this link*\n\n*wa.me/message/GVOTYLER4FAPM1*\n\n*⛅You can join my whatsapp group*\n\n*https://chat.whatsapp.com/J6Eqe8YJOTtJY3sygyCNVZ*\n\n*😎Mr.Rasintha🕷️*`;
+            const sid = `*🐔ALEX-OFFICIAL💥*\n\n 🆔This is the your Session ID: ${string_session}\n\n*🛡️copy this id and paste into config.js file*\n\n*☑️You can ask any question using this link*\n\n*wa.me/message/GVOTYLER4FAPM1*\n\n*⛅You can join my whatsapp group*\n\n*https://chat.whatsapp.com/J6Eqe8YJOTtJY3sygyCNVZ*\n\n*😎Mr.Rasintha🕷️*`;
             const mg = `🛑 *Do not share this code to anyone* 🛑`;
             const dt = await RobinPairWeb.sendMessage(user_jid, {
               image: {
